@@ -1,4 +1,12 @@
                       # Phyloseq de parasitos #
+
+# No tenia microbiomeMarker asi que lo instale #
+BiocManager::install("microbiomeMarker")
+
+# Tampoco tenía este
+BiocManager::install("SIAMCAT")
+
+
 # Loading libraries:
 suppressMessages({
   library(ggplot2)
@@ -11,12 +19,15 @@ suppressMessages({
   library(vegan)
 })
 
-display_markdown(file = '../_resources/mgnifyr_help.md')
-
 
 # Setting tables and figures size to display (these will be reset later):
 options(repr.matrix.max.cols=150, repr.matrix.max.rows=200)
 options(repr.plot.width=4, repr.plot.height=4)
+
+
+# Create your session mgnify_client object
+mg = mgnify_client(usecache = T, cache_dir = '/home/jovyan/.mgnify_cache')
+tara_all = mgnify_analyses_from_studies(mg, 'MGYS00002008')
 
 
           # 1.1
