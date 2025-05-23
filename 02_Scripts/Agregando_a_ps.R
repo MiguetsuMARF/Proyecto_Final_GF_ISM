@@ -103,3 +103,12 @@ A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
 View(A)
 
 A[is.na(A)] <- 0
+
+A$Parasito
+A[which(str_detect(A$Parasito, "Al")),1] <- "Ascaris"
+A[which(str_detect(A$Parasito, "Ov")),1] <- "Opisthorchis"
+A[which(str_detect(A$Parasito, "Tt")),1] <- "Trichuris"
+A[which(str_detect(A$Parasito, "An")),1] <- "Ancilostoma"
+A[which(str_detect(A$Parasito, "Na")),1] <- "Necator"
+A[which(str_detect(A$Parasito, "Tsag")),1] <- "Taenia Saginata"
+A[which(str_detect(A$Parasito, "Haplorchis")),1] <- "Haplorchis taichui"
