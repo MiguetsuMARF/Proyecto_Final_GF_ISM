@@ -101,3 +101,5 @@ dim(A)
 
 A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
 View(A)
+
+A[is.na(A)] <- 0
