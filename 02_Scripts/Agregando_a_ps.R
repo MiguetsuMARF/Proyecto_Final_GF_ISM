@@ -75,3 +75,29 @@ nueva2
 sample_data(psH1) <- sample_data(nueva2)
 
 View(sample_data(psH1))
+
+psH1f <- subset_samples(psH1, sample_data(psH1)$Parasito != 0 & sample_data(psH1)$Parasito != "NA")
+View(sample_data(psH1f))
+
+psH2f <- subset_samples(psH2, sample_data(psH2)$disease != "negative")
+View(sample_data(psH2f))
+
+A1 <- as.data.frame(otu_table(psH1f))
+A2 <- as.data.frame(otu_table(psH2f))
+A3 <- as.data.frame(otu_table(psP))
+
+A1$Parasito <- sample_data(psH1f)$Parasito
+A2$Parasito <- sample_data(psH2f)$disease
+A3$Parasito <- rep("Plasmodium", dim(A3)[1])
+
+View(A3)
+
+install.packages("tidyverse")
+library(tidyverse)
+
+A <- bind_rows(A1,A2,A3)
+
+dim(A)
+
+A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
+View(A)
