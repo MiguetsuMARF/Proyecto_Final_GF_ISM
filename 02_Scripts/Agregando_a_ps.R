@@ -65,3 +65,13 @@ for (i in 1:93) {
 }
 
 nueva
+nueva2 <- as.data.frame(sample_data(psH1))
+all(rownames(nueva2) == rownames(nueva))
+
+row.names(nueva) <- row.names(nueva2)
+nueva2$Parasito <- nueva[,1]
+nueva2$Sample <- nueva[,2]
+nueva2
+sample_data(psH1) <- sample_data(nueva2)
+
+View(sample_data(psH1))
