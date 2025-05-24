@@ -90,9 +90,13 @@ A1$Parasito <- sample_data(psH1f)$Parasito
 A2$Parasito <- sample_data(psH2f)$disease
 A3$Parasito <- rep("Plasmodium", dim(A3)[1])
 
+
+
+
+
+
 View(A3)
 
-install.packages("tidyverse")
 library(tidyverse)
 
 A <- bind_rows(A1,A2,A3)
@@ -100,6 +104,7 @@ A <- bind_rows(A1,A2,A3)
 dim(A)
 
 A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
+
 View(A)
 
 A[is.na(A)] <- 0
