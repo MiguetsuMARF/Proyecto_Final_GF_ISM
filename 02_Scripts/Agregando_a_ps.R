@@ -8,11 +8,16 @@ psH2 <- readRDS("01_RowData/RDS_ps/ps_helmints2")
 
 psP <- readRDS("01_RowData/RDS_ps/ps_plasmodium")
 
+psC <- readRDS("01_RowData/RDS_ps/phyloseq_control.rds")
+
+
 View(sample_data(psH1))
 
 View(sample_data(psH2))
 
 View(sample_data(psP))
+
+View(sample_data(psC))
 
 datos2 <- read.csv("../../journal.pntd.0010491.s002.xlsx - Supplmentary Table 1.csv")
 View(datos2)
@@ -90,9 +95,13 @@ A1$Parasito <- sample_data(psH1f)$Parasito
 A2$Parasito <- sample_data(psH2f)$disease
 A3$Parasito <- rep("Plasmodium", dim(A3)[1])
 
+
+
+
+
+
 View(A3)
 
-install.packages("tidyverse")
 library(tidyverse)
 
 A <- bind_rows(A1,A2,A3)
@@ -100,4 +109,16 @@ A <- bind_rows(A1,A2,A3)
 dim(A)
 
 A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
+
 View(A)
+
+A[is.na(A)] <- 0
+
+A$Parasito
+A[which(str_detect(A$Parasito, "Al")),1] <- "Ascaris"
+A[which(str_detect(A$Parasito, "Ov")),1] <- "Opisthorchis"
+A[which(str_detect(A$Parasito, "Tt")),1] <- "Trichuris"
+A[which(str_detect(A$Parasito, "An")),1] <- "Ancilostoma"
+A[which(str_detect(A$Parasito, "Na")),1] <- "Necator"
+A[which(str_detect(A$Parasito, "Tsag")),1] <- "Taenia Saginata"
+A[which(str_detect(A$Parasito, "Haplorchis")),1] <- "Haplorchis taichui"
