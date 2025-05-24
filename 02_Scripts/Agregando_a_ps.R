@@ -8,11 +8,16 @@ psH2 <- readRDS("01_RowData/RDS_ps/ps_helmints2")
 
 psP <- readRDS("01_RowData/RDS_ps/ps_plasmodium")
 
+psC <- readRDS("01_RowData/RDS_ps/phyloseq_control.rds")
+
+
 View(sample_data(psH1))
 
 View(sample_data(psH2))
 
 View(sample_data(psP))
+
+View(sample_data(psC))
 
 datos2 <- read.csv("../../journal.pntd.0010491.s002.xlsx - Supplmentary Table 1.csv")
 View(datos2)
