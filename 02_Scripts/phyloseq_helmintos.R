@@ -233,6 +233,8 @@ taxa.print <- taxa
 rownames(taxa.print) <- NULL
 head(taxa.print)
 
+View(seqtab)
+
 library(phyloseq)
 library(Biostrings)
 library(ggplot2)
@@ -254,9 +256,12 @@ return(ps)
 
 View(otu_table(ps))
 
-saveRDS(ps, file = "01_RowData/ps_helmints")
+saveRDS(ps, file = "01_RowData/ps_schisto")
 class(ps)
 
+ps
+
+any(otu_table(ps) != 0)
 
 
 path <- "../../fastq_files5"

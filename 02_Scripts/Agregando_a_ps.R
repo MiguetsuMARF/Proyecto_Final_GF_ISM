@@ -138,6 +138,20 @@ sample_data(psP) <- sample_data(datos3)
 
 saveRDS(psP, "01_RowData/RDS_ps/ps_plasmodium")
 
+psS <- readRDS("01_RowData/ps_schisto")
+
+View(sample_data(psS))
+
+psS <- subset_samples(psS, sample_data(psS)$infection_status == "Yes")
+
+datoss <- sample_data(psS)
+
+datoss$Parasito <- rep("Schistosoma", dim(datoss)[1])
+
+sample_data(psS) <- sample_data(datoss)
+
+saveRDS(psS, "01_RowData/RDS_ps/ps_schistosoma")
+
 A1 <- as.data.frame(otu_table(psH1f))
 A2 <- as.data.frame(otu_table(psH2f))
 A3 <- as.data.frame(otu_table(psP))

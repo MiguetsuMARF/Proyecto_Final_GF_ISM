@@ -16,6 +16,8 @@ ps_plasmodium <- readRDS("01_RowData/RDS_ps/ps_plasmodium") ## Columna Parasito 
 
 ps_control <- readRDS("01_RowData/RDS_ps/ps_control")
 
+ps_schistosoma <- readRDS("01_RowData/RDS_ps/ps_schistosoma")
+
 library(phyloseq)
 
 A1 <- as.data.frame(otu_table(ps_haplorchis))
@@ -27,5 +29,4 @@ A6 <- as.data.frame(otu_table(ps_plasmodium))
 A7 <- as.data.frame(otu_table(ps_taenia))
 A8 <- as.data.frame(otu_table(ps_trichuris))
 A9 <- as.data.frame(otu_table(ps_control))
-
-A1
+A10 <- as.data.frame(otu_table(ps_schistosoma))

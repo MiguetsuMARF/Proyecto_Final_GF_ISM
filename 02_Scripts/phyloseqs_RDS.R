@@ -17,3 +17,5 @@ ps_taenia <- readRDS("01_RowData/RDS_ps/ps_TAENIA") ## Columna Parasito en sampl
 ps_plasmodium <- readRDS("01_RowData/RDS_ps/ps_plasmodium") ## Columna Parasito en sample_data
 
 ps_control <- readRDS("01_RowData/RDS_ps/ps_control")
+
+ps_schistosoma <- readRDS("01_RowData/RDS_ps/ps_schistosoma")
