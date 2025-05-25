@@ -9,6 +9,8 @@ str(m_dist_DP2)
 
 mat_dist <- as.matrix(m_dist_DP2)
 
+heatmap(mat_dist, main = "Matriz de distancias")
+
 g_1 <- graph_from_adjacency_matrix(mat_dist, mode = "undirected", weighted = TRUE, diag = FALSE)
 
 plot(g_1,edge.size = 10,vertex.size=(eccentricity(g_1)^2), vertex.color = "beige", # el tamaño del nodo depende de la eccentricidad
@@ -27,14 +29,26 @@ plot(g_1,
 
 heatmap(cor_matrix_DP2)
 
-#-----#
-
+# ----------- medidas de centralidad ----------- #
 degree(g_1)
+
 betweenness(g_1)
+
+transitivity(g_1, type = "local") # mide que tan conectados estan los vecinos
+# En este caso opistohorchis y ancilostoma son los que tienen a los vecinos mejor conectados
+
+
+mean_distance(g_1)
+
+edge_density(g_1)
 
 sort(eccentricity(g_1), decreasing = FALSE)
 
 sort(closeness(g_1), decreasing = TRUE)
+
+
+
+# ---------------- CLUSTERING --------------- #
 
 walktrap.community(g_1) -> walktrap_g1
 membership(walktrap_g1)
@@ -47,6 +61,11 @@ membership(infomap_g1)
 # Todos estan conectados y la distancia depende de que tan parecidos
 # o que tan diferentes son.
 
+
+
+
+
+# ------------------------ RED BOULEANA ----------------------- #
 
 mean(mat_dist) -> umbral # Usare este dato como ubral para determinar si estan o no conectados
 umbral 
@@ -64,13 +83,26 @@ plot(g_boul,
      vertex.color = "darkgreen",
      layout = layout_with_fr(g_boul))
 
-# medidas de centralidad
+# ----------- medidas de centralidad ----------- #
 degree(g_boul)
+
 betweenness(g_boul)
+
+transitivity(g_boul, type = "local") # mide que tan conectados estan los vecinos
+# En este caso opistohorchis y ancilostoma son los que tienen a los vecinos mejor conectados
+
+
+mean_distance(g_boul)
+
+edge_density(g_boul)
 
 sort(eccentricity(g_boul), decreasing = FALSE)
 
 sort(closeness(g_boul), decreasing = TRUE)
+
+components(g_boul)
+
+# ---------------- CLUSTERING --------------- #
 
 walktrap.community(g_boul) -> walktrap_g_boul
 membership(walktrap_g_boul)

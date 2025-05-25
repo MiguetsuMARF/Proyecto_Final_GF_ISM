@@ -81,6 +81,8 @@ caracteristicas_parasitos <- data.frame(
   
   apicomplexo = c(0,0,0,0,0,0,0,0,1),
   
+  cestodo = c(0,0,0,0,0,1,0,0,0),
+  
   intracelular = c(0,0,0,0,0,0,0,0,1),
   
   extracelular = c(1,1,1,1,1,1,1,1,0),
@@ -130,7 +132,7 @@ caracteristicas_parasitos -> Datos_parasitos_2
 
 rownames(Datos_parasitos_2) <- caracteristicas_parasitos$Parasito
 
-Datos_parasitos_2[,2:36] -> dp2
+Datos_parasitos_2[,2:37] -> dp2
 
 # Distancia entre parasitos
 dist(dp2) -> m_dist_DP2
@@ -146,3 +148,31 @@ dim(Datos_parasitos_2)
 
 cor_matrix_DP2 <- cor(t(dp2), method = "pearson")   
 
+<<<<<<< Updated upstream
+=======
+
+# cluster
+# medidas de centralidad
+
+
+
+
+
+
+
+
+# Lnieas miguel
+<<<<<<< HEAD
+
+=======
+  Datos_parasitos2 <- data.frame(
+    Parasito = c("Ascaris", "Opisthorchis", "Trichuris",
+                 "Ancilostoma", "Necator", "Taenia_Saginata",
+                 "Haplorchis_taichui", "Schistosoma_mansoni"),
+    Cuticula = c(1,0,0,0,1,0,0,0),
+    Labios = c(1,0,0,0,0,0,0,0)
+    >>>>>>> e0b134d69b99a325cbff44421c38f6ffc0482787
+  )
+
+
+>>>>>>> Stashed changes
