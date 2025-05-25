@@ -66,6 +66,9 @@ Final <- data.frame()
 a <- c("Haplorchis taichui", "Ancilostoma", "Ascaris", "Necator",
        "Opisthorchis", "Plasmodium", "Taenia Saginata", "Trichuris", "Control", "Schistosoma")
 
+
+write.csv(A, "01_RowData/dataframe")
+
 for (i in 1:10) {
   b <- a[i]
   z <- A[A$Parasito == b, ]  
@@ -87,4 +90,5 @@ View(Final)
 Final <- Final[, c(ncol(Final), 1:(ncol(Final)-1))]
 View(Final)
 
+write.csv(Final, "01_RowData/dataframe_final")
 
