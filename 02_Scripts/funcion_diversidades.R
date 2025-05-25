@@ -1,7 +1,9 @@
 library(vegan)
 library(phyloseq)
 
-
+ps_parasitos<- list(ps_control, ps_haplorchis, ps_ascaris, ps_opisthorchis, ps_trichuris,
+                    ps_ancilostoma, ps_necator, ps_taenia, ps_plasmodium, ps_schistosoma,
+                    ps_ancilostoma3, ps_ascaris2, ps_ancylostoma2)
 
 
 diversidades_parasito <- function(lista_phyloseq) {
@@ -42,7 +44,7 @@ diversidades_parasito <- function(lista_phyloseq) {
   return(resultados)
 }
 
-
+#Un trial run a ver qpd
 prueba1<- list(phylo_ancylostoma,phylo_ascaris)
 
 names(prueba1) <- paste0("phylo", seq_along(prueba1))
@@ -50,4 +52,12 @@ names(prueba1) <- paste0("phylo", seq_along(prueba1))
 names(prueba1)
 diversidades_parasito(prueba1)
 
+
+#Ahora sí 
+
+names(ps_parasitos)<- c("ps_control", "ps_haplorchis", "ps_ascaris", "ps_opisthorchis",
+                        "ps_trichuris", "ps_ancilostoma", "ps_necator", "ps_taenia",
+                        "ps_plasmodium", "ps_schistosoma",
+                        "ps_ancilostoma3", "ps_ascaris2", "ps_ancylostoma2")
+diversidades_parasito(ps_parasitos)
 
