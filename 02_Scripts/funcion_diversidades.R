@@ -8,7 +8,7 @@ ps_parasitos<- list(ps_control, ps_haplorchis, ps_ascaris, ps_opisthorchis, ps_t
 
 diversidades_parasito <- function(lista_phyloseq) {
   resultados <- data.frame(
-    ID = character(),
+    Parasito = character(),
     Shannon = numeric(),
     Simpson = numeric(),
     Sh_normalizado = numeric(),
@@ -32,7 +32,7 @@ diversidades_parasito <- function(lista_phyloseq) {
     
     
     resultados <- rbind(resultados, data.frame(
-      ID = names(lista_phyloseq)[i],
+      Parasito = names(lista_phyloseq)[i],
       Shannon = shannon_media,
       Simpson = simpson_media,
       Sh_normalizado = sh_norm
@@ -61,15 +61,15 @@ df_diversidades<-diversidades_parasito(ps_parasitos)
 
 diversidades_num<- df_diversidades[,-1]
 diversidades_num
-ID<-df_diversidades$ID
+Parasito<-df_diversidades$Parasito
 
 
 diversidistancias<-(dist(diversidades_num, method = "euclidean"))
 
 diversidistancias<-as.matrix(diversidistancias)
 
-rownames(diversidistancias)<- ID
-colnames(diversidistancias)<-ID
+rownames(diversidistancias)<- Parasito
+colnames(diversidistancias)<-Parasito
 
 library(igraph)
 
