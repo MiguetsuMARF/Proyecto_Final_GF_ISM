@@ -10,6 +10,12 @@ psP <- readRDS("01_RowData/RDS_ps/ps_plasmodium")
 
 psC <- readRDS("01_RowData/RDS_ps/phyloseq_control.rds")
 
+datosC <- as.data.frame(sample_data(psC))
+datosC$Parasito <- rep("Control", dim(datosC)[1])
+sample_data(psC) <- sample_data(datosC)
+
+saveRDS(psC, "01_RowData/RDS_ps/ps_control")
+
 View(otu_table(psP))
 View(sample_data(psH1))
 
