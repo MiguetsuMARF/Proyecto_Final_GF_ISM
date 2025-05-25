@@ -20,4 +20,8 @@ ps_control <- readRDS("01_RowData/RDS_ps/ps_control")
 
 ps_schistosoma <- readRDS("01_RowData/RDS_ps/ps_schistosoma")
 
-ps_ancilostoma_extra <- readRDS("01_RowData/RDS_ps/ps_ancilostoma_limpio.rds") # Columna parasito en sample_data
+ps_ancilostoma3 <- readRDS("01_RowData/RDS_ps/ps_ancylostoma3") # Columna parasito en sample_data
+
+ps_ascaris2 <- readRDS("01_RowData/RDS_ps/ps_ascaris2") # Columna parasito en sample_data
+
+ps_ancylostoma2 <- readRDS("01_RowData/RDS_ps/ps_ancylostoma2") # Columna parasito en sample_data
