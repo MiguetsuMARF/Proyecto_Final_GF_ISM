@@ -128,6 +128,25 @@ View(caracteristicas_parasitos)
 
 caracteristicas_parasitos -> Datos_parasitos_2
 
+rownames(Datos_parasitos_2) <- caracteristicas_parasitos$Parasito
+
+Datos_parasitos_2[,2:36] -> dp2
+
+# Distancia entre parasitos
+dist(dp2) -> m_dist_DP2
+str(m_dist_DP2)
+
+
+
+# Correlación entre parasitos
+
+str(dp2)
+View(dp2)
+dim(Datos_parasitos_2)
+
+cor_matrix_DP2 <- cor(t(dp2), method = "pearson")   
+
+
 
 # Lnieas miguel
 <<<<<<< HEAD
@@ -141,4 +160,5 @@ caracteristicas_parasitos -> Datos_parasitos_2
     Labios = c(1,0,0,0,0,0,0,0)
     >>>>>>> e0b134d69b99a325cbff44421c38f6ffc0482787
   )
+
 
