@@ -18,6 +18,12 @@ ps_control <- readRDS("01_RowData/RDS_ps/ps_control")
 
 ps_schistosoma <- readRDS("01_RowData/RDS_ps/ps_schistosoma")
 
+ps_ancilostoma3 <- readRDS("01_RowData/RDS_ps/ps_ancylostoma3")  # Columna parasito en sample_data
+
+ps_ascaris2 <- readRDS("01_RowData/RDS_ps/ps_ascaris2") # Columna parasito en sample_data
+
+ps_ancylostoma2 <- readRDS("01_RowData/RDS_ps/ps_ancylostoma2") # Columna parasito en sample_data
+
 library(phyloseq)
 
 A1 <- as.data.frame(otu_table(ps_haplorchis))
@@ -30,6 +36,9 @@ A7 <- as.data.frame(otu_table(ps_taenia))
 A8 <- as.data.frame(otu_table(ps_trichuris))
 A9 <- as.data.frame(otu_table(ps_control))
 A10 <- as.data.frame(otu_table(ps_schistosoma))
+A11 <- as.data.frame(otu_table(ps_ancilostoma3))
+A12 <- as.data.frame(otu_table(ps_ascaris2))
+A13 <- as.data.frame(otu_table(ps_ancylostoma2))
 
 A1$Parasito <- sample_data(ps_haplorchis)$Parasito
 A2$Parasito <- sample_data(ps_ancilostoma)$Parasito
@@ -41,10 +50,13 @@ A7$Parasito <- sample_data(ps_taenia)$Parasito
 A8$Parasito <- sample_data(ps_trichuris)$Parasito
 A9$Parasito <- sample_data(ps_control)$Parasito
 A10$Parasito <- sample_data(ps_schistosoma)$Parasito
+A11$Parasito <- sample_data(ps_ancilostoma3)$Parasito
+A12$Parasito <- sample_data(ps_ascaris2)$Parasito
+A13$Parasito <- sample_data(ps_ancylostoma2)$Parasito
 
 library(tidyverse)
 
-A <- bind_rows(A1,A2,A3,A4,A5,A6,A7,A8,A9,A10)
+A <- bind_rows(A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13)
 
 A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
 A$Parasito
@@ -67,10 +79,12 @@ for (i in 1:10) {
   Final <- bind_rows(Final, fd)  
 }
 
+rownames(Final) <- a
 dim(Final)
+
+View(Final)
 
 Final <- Final[, c(ncol(Final), 1:(ncol(Final)-1))]
 View(Final)
-a <- c(1:4)
-b <- c(5:8)
+
 
