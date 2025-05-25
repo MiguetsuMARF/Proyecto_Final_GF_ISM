@@ -6,7 +6,8 @@ Datos_parasitos <- data.frame(
                "Ancilostoma", "Necator", "Taenia_Saginata",
                "Haplorchis_taichui", "Schistosoma_mansoni"), ## Aqui se agregan los parasitos que vamos a utilizar
   
-  Mecanismo_patogenicidad = c(1:6,"ventosa_oral/ventral" , "tegumento"),
+  Mecanismo_patogenicidad = c("cuticula/labios/enzimas", "ventosas/espinas", "extremo_anterior", "dientes/enzimas", "cuticula/enzimas", "ventosas","ventosas" , "tegumento"),
+  # me gustaria reducir todos los tipos de enzimas a solo enzimas, y ventosas a solo ventosas.
   
   Tipo_de_parasito = c("nematodo", "trematodo", "nematodo",
                        "nematodo", "nematodo", "cestodo",
