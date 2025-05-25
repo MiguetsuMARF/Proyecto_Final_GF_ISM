@@ -10,7 +10,7 @@ psP <- readRDS("01_RowData/RDS_ps/ps_plasmodium")
 
 psC <- readRDS("01_RowData/RDS_ps/phyloseq_control.rds")
 
-
+View(otu_table(psP))
 View(sample_data(psH1))
 
 View(sample_data(psH2))
@@ -19,7 +19,7 @@ View(sample_data(psP))
 
 View(sample_data(psC))
 
-datos2 <- read.csv("../../journal.pntd.0010491.s002.xlsx - Supplmentary Table 1.csv")
+datos2 <- read.csv("01_RowData/journal.pntd.0010491.s002.xlsx - Supplmentary Table 1.csv")
 View(datos2)
 datos2[,11]
 
@@ -81,44 +81,65 @@ sample_data(psH1) <- sample_data(nueva2)
 
 View(sample_data(psH1))
 
+
 psH1f <- subset_samples(psH1, sample_data(psH1)$Parasito != 0 & sample_data(psH1)$Parasito != "NA")
 View(sample_data(psH1f))
 
+saveRDS(psH1f, file = "01_RowData/RDS_ps/ps_helmintsF")
+
+datosh1 <- sample_data(psH1f)
+datosh1
+
+datosh1[which(str_detect(datosh1$Parasito, "Al")),"Parasito"] <- "Ascaris"
+datosh1[which(str_detect(datosh1$Parasito, "Ov")),"Parasito"] <- "Opisthorchis"
+datosh1[which(str_detect(datosh1$Parasito, "Tt")),"Parasito"] <- "Trichuris"
+datosh1[which(str_detect(datosh1$Parasito, "An")),"Parasito"] <- "Ancilostoma"
+datosh1[which(str_detect(datosh1$Parasito, "Na")),"Parasito"] <- "Necator"
+datosh1[which(str_detect(datosh1$Parasito, "Tsag")),"Parasito"] <- "Taenia Saginata"
+
+sample_data(psH1f) <- sample_data(datosh1)
+
+psH1fas <- subset_samples(psH1f, sample_data(psH1f)$Parasito == "Ascaris")
+psH1fop <- subset_samples(psH1f, sample_data(psH1f)$Parasito == "Opisthorchis")
+psH1ftr <- subset_samples(psH1f, sample_data(psH1f)$Parasito == "Trichuris")
+psH1fan <- subset_samples(psH1f, sample_data(psH1f)$Parasito == "Ancilostoma")
+psH1fne <- subset_samples(psH1f, sample_data(psH1f)$Parasito == "Necator")
+psH1fta <- subset_samples(psH1f, sample_data(psH1f)$Parasito == "Taenia Saginata")
+saveRDS(psH1fas, file = "01_RowData/RDS_ps/ps_ASCARIS")
+saveRDS(psH1fop, file = "01_RowData/RDS_ps/ps_OPISTHORCHIS")
+saveRDS(psH1ftr, file = "01_RowData/RDS_ps/ps_TRICHURIS")
+saveRDS(psH1fan, file = "01_RowData/RDS_ps/ps_ANCILOSTOMA")
+saveRDS(psH1fne, file = "01_RowData/RDS_ps/ps_NECATOR")
+saveRDS(psH1fta, file = "01_RowData/RDS_ps/ps_TAENIA")
+
 psH2f <- subset_samples(psH2, sample_data(psH2)$disease != "negative")
+
+datosH2 <- as.data.frame(sample_data(psH2f))
+datosH2$Parasito <- rep("Haplorchis taichui", dim(datosH2)[1])
+sample_data(psH2f) <- sample_data(datosH2)
+
 View(sample_data(psH2f))
+
+saveRDS(psH2f, "01_RowData/RDS_ps/ps_Haplorchis")
+
+ps_haplorchis <- readRDS("01_RowData/RDS_ps/ps_Haplorchis")
+
+datos3 <- sample_data(psP)
+
+datos3$Parasito <- rep("Plasmodium", dim(datos3)[1])
+
+sample_data(psP) <- sample_data(datos3)
+
+saveRDS(psP, "01_RowData/RDS_ps/ps_plasmodium")
 
 A1 <- as.data.frame(otu_table(psH1f))
 A2 <- as.data.frame(otu_table(psH2f))
 A3 <- as.data.frame(otu_table(psP))
 
-A1$Parasito <- sample_data(psH1f)$Parasito
-A2$Parasito <- sample_data(psH2f)$disease
-A3$Parasito <- rep("Plasmodium", dim(A3)[1])
-
-
-
-
-
-
-View(A3)
-
 library(tidyverse)
 
 A <- bind_rows(A1,A2,A3)
 
-dim(A)
-
 A <- A[,c("Parasito", setdiff(names(A), "Parasito"))]
 
-View(A)
-
 A[is.na(A)] <- 0
-
-A$Parasito
-A[which(str_detect(A$Parasito, "Al")),1] <- "Ascaris"
-A[which(str_detect(A$Parasito, "Ov")),1] <- "Opisthorchis"
-A[which(str_detect(A$Parasito, "Tt")),1] <- "Trichuris"
-A[which(str_detect(A$Parasito, "An")),1] <- "Ancilostoma"
-A[which(str_detect(A$Parasito, "Na")),1] <- "Necator"
-A[which(str_detect(A$Parasito, "Tsag")),1] <- "Taenia Saginata"
-A[which(str_detect(A$Parasito, "Haplorchis")),1] <- "Haplorchis taichui"
