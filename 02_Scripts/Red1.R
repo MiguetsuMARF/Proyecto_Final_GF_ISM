@@ -19,8 +19,13 @@ diag(md) <- 0
 md
 library(igraph)
 
-matriz_adj <- (md> (0.675*mean(dist(data2))))
-matriz_adj
+matriz_adj <- (md> (0.7*mean(dist(data2))))
 coexpresion <- graph_from_adjacency_matrix(matriz_adj, mode = "undirected", diag = FALSE)
 plot(coexpresion)
 
+mc <- cor(t(as.matrix(data2)))
+diag(mc) <- 0
+
+matriz_adj2 <- (mc > (0.5))
+coexpresion2 <- graph_from_adjacency_matrix(matriz_adj2, mode = "undirected", diag = FALSE)
+plot(coexpresion2)
