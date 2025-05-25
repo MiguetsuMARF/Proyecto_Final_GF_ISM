@@ -43,6 +43,12 @@ Datos_parasitos <- data.frame(
 
 View(Datos_parasitos)
 
-
+Datos_parasitos2 <- data.frame(
+  Parasito = c("Ascaris", "Opisthorchis", "Trichuris",
+               "Ancilostoma", "Necator", "Taenia_Saginata",
+               "Haplorchis_taichui", "Schistosoma_mansoni"),
+  Cuticula = c(1,0,0,0,1,0,0,0),
+  Labios = c(1,0,0,0,0,0,0,0)
+)
 
 
