@@ -72,8 +72,7 @@ rownames(diversidistancias)<- ID
 colnames(diversidistancias)<-ID
 
 library(igraph)
-
-umbral<- 1.5
+umbral<- mean(diversidistancias)
 diversifiltro<- diversidistancias < umbral
 
 rownames(diversifiltro) <- rownames(diversidistancias)
