@@ -5,7 +5,7 @@ diversidades_parasitos <- function(vector_phyloseqs_varios) {
     Simpson = numeric(),
     Chao = numeric()
   )
-  for (i in 1:lenght(vector_phyloseqs_varios)) {
+  for (i in 1:length(vector_phyloseqs_varios)) {
     ps <- vector_phyloseqs_varios[[i]]
     otu <- as.matrix(otu_table(ps))
     if (taxa_are_rows(ps)) {
