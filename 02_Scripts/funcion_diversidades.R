@@ -57,5 +57,31 @@ names(ps_parasitos)<- c("ps_control", "ps_haplorchis", "ps_ascaris", "ps_opistho
                         "ps_trichuris", "ps_ancilostoma", "ps_necator", "ps_taenia",
                         "ps_plasmodium", "ps_schistosoma",
                         "ps_ancilostoma3", "ps_ascaris2", "ps_ancylostoma2")
-diversidades_parasito(ps_parasitos)
+df_diversidades<-diversidades_parasito(ps_parasitos)
 
+diversidades_num<- df_diversidades[,-1]
+diversidades_num
+ID<-df_diversidades$ID
+
+
+diversidistancias<-(dist(diversidades_num, method = "euclidean"))
+
+diversidistancias<-as.matrix(diversidistancias)
+
+rownames(diversidistancias)<- ID
+colnames(diversidistancias)<-ID
+
+library(igraph)
+
+umbral<- 1.5
+diversifiltro<- diversidistancias < umbral
+
+rownames(diversifiltro) <- rownames(diversidistancias)
+colnames(diversifiltro)<- colnames(diversidistancias)
+red_diversidades<-graph_from_adjacency_matrix(diversifiltro, mode = "undirected",
+                                              diag = FALSE)
+
+V(red_diversidades)$name
+V(red_diversidades)$name<- rownames(diversifiltro)
+
+plot(red_diversidades)
