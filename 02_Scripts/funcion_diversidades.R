@@ -1,6 +1,9 @@
 library(vegan)
 library(phyloseq)
 
+
+
+
 diversidades_parasito <- function(lista_phyloseq) {
   resultados <- data.frame(
     ID = character(),
