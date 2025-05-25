@@ -1,7 +1,5 @@
 library(phyloseq)
 
-phylo_nematodos<- readRDS("FASTQ/PhyloseqNematodos")
-
 phylo_ascaris<- readRDS("FASTQ/Phyloseq_ascaris")
 
 phylo_ancylostoma<- readRDS("FASTQ/phyloseq_ancylostoma")
