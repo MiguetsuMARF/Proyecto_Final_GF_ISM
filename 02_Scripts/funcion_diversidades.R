@@ -11,7 +11,6 @@ diversidades_parasito <- function(lista_phyloseq) {
     ID = character(),
     Shannon = numeric(),
     Simpson = numeric(),
-    Chao1 = numeric(),
     Sh_normalizado = numeric(),
     stringsAsFactors = FALSE
   )
@@ -28,23 +27,15 @@ diversidades_parasito <- function(lista_phyloseq) {
     sh_norm <- mean(shannon / log(SS), na.rm = TRUE)
     simpson <- mean(diversity(otu, index = "simpson"))
     sh_norm<- mean(shannon/log(SS))
-    estimadores <- estimateR(otu)
-    
     shannon_media <- mean(shannon, na.rm = TRUE)
     simpson_media <- mean(diversity(otu, index = "simpson"), na.rm = TRUE)
     
-    if ("Chao1" %in% rownames(estimadores)) {
-      chao1 <- mean(estimadores["Chao1", ])
-    } else {
-      chao1 <- NA
-    }
     
     resultados <- rbind(resultados, data.frame(
       ID = names(lista_phyloseq)[i],
       Shannon = shannon_media,
       Simpson = simpson_media,
-      Sh_normalizado = sh_norm,
-      Chao1 = chao1
+      Sh_normalizado = sh_norm
     ))
   }
   
