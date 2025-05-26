@@ -33,7 +33,7 @@ diversidades_parasito <- function(lista_phyloseq) {
     
     shannon_media <- mean(shannon, na.rm = TRUE)
     simpson_media <- mean(simpson, na.rm = TRUE)
-    sh_norm <- mean(shannon / log(SS), na.rm = TRUE)
+    sh_norm <- mean(shannon/log(SS), na.rm = TRUE)
     
     resultados <- rbind(resultados, data.frame(
       Parasito = names(lista_phyloseq)[i],
@@ -89,7 +89,7 @@ library(igraph)
 #Es para que las conexiones solo aparezcan si son con un valor mayor al promedio
 #de la matriz, pero pues sigue siendo algo arbitrario 
 
-umbral<- 0.5*mean(diversidistancias)
+umbral<- 0.6*mean(diversidistancias)
 diversifiltro<- diversidistancias < umbral #Filtrando por el umbral
 
 #Para que los nodos tengan nombre 
