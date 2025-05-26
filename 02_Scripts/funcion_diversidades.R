@@ -33,7 +33,7 @@ diversidades_parasito <- function(lista_phyloseq) {
     
     shannon_media <- mean(shannon, na.rm = TRUE)
     simpson_media <- mean(simpson, na.rm = TRUE)
-    sh_norm <- mean(shannon / log(SS), na.rm = TRUE)
+    sh_norm <- mean(shannon/log(SS), na.rm = TRUE)
     
     resultados <- rbind(resultados, data.frame(
       Parasito = names(lista_phyloseq)[i],
@@ -89,7 +89,7 @@ library(igraph)
 #Es para que las conexiones solo aparezcan si son con un valor mayor al promedio
 #de la matriz, pero pues sigue siendo algo arbitrario 
 
-umbral<- 0.5*mean(diversidistancias)
+umbral<- 0.6*mean(diversidistancias)
 diversifiltro<- diversidistancias < umbral #Filtrando por el umbral
 
 #Para que los nodos tengan nombre 
@@ -107,10 +107,9 @@ V(red_diversidades)$name<- rownames(diversifiltro)
 optimal <- cluster_optimal(red_diversidades)
 plot(red_diversidades, vertex.color=membership(optimal))
 
-pdf("03_Results/red_diversidades")
-plot(red_diversidades) #No se ve ningún resutlado coherente.
+pdf(file = "03_Results/Red_Diversidadess")
+plot(red_diversidades, vertex.color=membership(optimal))
 dev.off()
-
 #Ahora voy a hacer ANOVAs
 
 df_anova<- df_diversidades[-1,]
@@ -123,9 +122,6 @@ Shannova<-aov(Shannon~tipo_parasito, data = df_anova)
 summary(Shannova)
 TukeyHSD(Shannova)
 
-df_anova$nicho<- c("intestino_delgado", "intestino_delgado", "conductos_biliares"
-                   , "colon", "intestino_delgado", "", "", "", "", "")
-
-parasinoba <- aov(Shannon ~ Parasito, df_anova)
-summary.aov(parasinoba)
-TukeyHSD(parasinoba)
+Simpsonova<-aov(Simpson~tipo_parasito, data = df_anova)
+summary(Simpsonova)
+TukeyHSD(Simpsonova)
