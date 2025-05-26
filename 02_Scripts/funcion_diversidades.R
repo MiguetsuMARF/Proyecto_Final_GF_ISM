@@ -89,8 +89,8 @@ library(igraph)
 #Es para que las conexiones solo aparezcan si son con un valor mayor al promedio
 #de la matriz, pero pues sigue siendo algo arbitrario 
 
-umbral<- 1.5*mean(diversidistancias)
-diversifiltro<- diversidistancias > umbral #Filtrando por el umbral
+umbral<- 0.5*mean(diversidistancias)
+diversifiltro<- diversidistancias < umbral #Filtrando por el umbral
 
 #Para que los nodos tengan nombre 
 rownames(diversifiltro) <- rownames(diversidistancias)
@@ -103,8 +103,13 @@ red_diversidades<-graph_from_adjacency_matrix(diversifiltro, mode = "undirected"
 V(red_diversidades)$name
 V(red_diversidades)$name<- rownames(diversifiltro)
 
-plot(red_diversidades) #No se ve ningún resutlado coherente.
+# CLUSTERIZAR   
+optimal <- cluster_optimal(red_diversidades)
+plot(red_diversidades, vertex.color=membership(optimal))
 
+pdf("03_Results/red_diversidades")
+plot(red_diversidades) #No se ve ningún resutlado coherente.
+dev.off()
 
 #Ahora voy a hacer ANOVAs
 
