@@ -111,7 +111,7 @@ components(g_boul)
 
 walktrap.community(g_boul) -> walktrap_g_boul
 membership(walktrap_g_boul)
-plot(g_boul, vertex.color= membership(walktrap_g_boul),  edge.arrow.size=0.25)  # va pa la expo
+plot(g_boul,vertex.size=(degree(g_boul)^2*2),vertex.color= membership(walktrap_g_boul),  edge.arrow.size=0.25)  # va pa la expo
 
 
 pdf("03_Results/Red_bouleana_caracteristicas.pdf")
