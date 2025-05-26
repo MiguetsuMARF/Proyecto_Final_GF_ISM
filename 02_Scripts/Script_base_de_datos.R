@@ -148,31 +148,7 @@ dim(Datos_parasitos_2)
 
 cor_matrix_DP2 <- cor(t(dp2), method = "pearson")   
 
-<<<<<<< Updated upstream
-=======
-
 # cluster
 # medidas de centralidad
 
 
-
-
-
-
-
-
-# Lnieas miguel
-<<<<<<< HEAD
-
-=======
-  Datos_parasitos2 <- data.frame(
-    Parasito = c("Ascaris", "Opisthorchis", "Trichuris",
-                 "Ancilostoma", "Necator", "Taenia_Saginata",
-                 "Haplorchis_taichui", "Schistosoma_mansoni"),
-    Cuticula = c(1,0,0,0,1,0,0,0),
-    Labios = c(1,0,0,0,0,0,0,0)
-    >>>>>>> e0b134d69b99a325cbff44421c38f6ffc0482787
-  )
-
-
->>>>>>> Stashed changes
