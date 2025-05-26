@@ -62,7 +62,7 @@ membership(infomap_g1)
 # o que tan diferentes son.
 
 
-
+tkplot(g_1)
 
 
 # ------------------------ RED BOULEANA ----------------------- #
@@ -106,7 +106,12 @@ components(g_boul)
 
 walktrap.community(g_boul) -> walktrap_g_boul
 membership(walktrap_g_boul)
+plot(g_boul, vertex.color= membership(walktrap_g_boul),  edge.arrow.size=0.25)  # va pa la expo
+
+
+pdf("03_Results/Red_bouleana_caracteristicas.pdf")
 plot(g_boul, vertex.color= membership(walktrap_g_boul),  edge.arrow.size=0.25)
+dev.off()
 
 infomap.community(g_boul) -> infomap_g_boul
 membership(infomap_g_boul)
@@ -116,3 +121,4 @@ cluster_edge_betweenness(g_boul) -> ceb_g_boul
 membership(ceb_g_boul)
 plot(g_boul, vertex.color= membership(ceb_g_boul),  edge.arrow.size=0.25)
 
+tkplot(g_boul) # Es para la red interactiva
