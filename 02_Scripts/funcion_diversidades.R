@@ -107,10 +107,9 @@ V(red_diversidades)$name<- rownames(diversifiltro)
 optimal <- cluster_optimal(red_diversidades)
 plot(red_diversidades, vertex.color=membership(optimal))
 
-png("03_Results/red_diversidades")
+pdf(file = "03_Results/Red_Diversidadess")
 plot(red_diversidades, vertex.color=membership(optimal))
 dev.off()
-
 #Ahora voy a hacer ANOVAs
 
 df_anova<- df_diversidades[-1,]
@@ -123,9 +122,6 @@ Shannova<-aov(Shannon~tipo_parasito, data = df_anova)
 summary(Shannova)
 TukeyHSD(Shannova)
 
-df_anova$nicho<- c("intestino_delgado", "intestino_delgado", "conductos_biliares"
-                   , "colon", "intestino_delgado", "", "", "", "", "")
-
-parasinoba <- aov(Shannon ~ Parasito, df_anova)
-summary.aov(parasinoba)
-TukeyHSD(parasinoba)
+Simpsonova<-aov(Simpson~tipo_parasito, data = df_anova)
+summary(Simpsonova)
+TukeyHSD(Simpsonova)
