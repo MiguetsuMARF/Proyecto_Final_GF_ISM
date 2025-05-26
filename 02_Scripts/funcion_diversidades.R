@@ -12,7 +12,7 @@ ps_parasitos<- list(ps_control, ps_haplorchis, ps_ascaris, ps_opisthorchis, ps_t
 
 diversidades_parasito <- function(lista_phyloseq) {
   resultados <- data.frame(
-    ID = character(),
+    Parasito = character(),
     Shannon = numeric(),
     Simpson = numeric(),
     Sh_normalizado = numeric(),
@@ -36,7 +36,7 @@ diversidades_parasito <- function(lista_phyloseq) {
     
     
     resultados <- rbind(resultados, data.frame(
-      ID = names(lista_phyloseq)[i],
+      Parasito = names(lista_phyloseq)[i],
       Shannon = shannon_media,
       Simpson = simpson_media,
       Sh_normalizado = sh_norm
@@ -68,18 +68,27 @@ df_diversidades<-diversidades_parasito(ps_parasitos)
 #Quitando la columna ID
 diversidades_num<- df_diversidades[,-1]
 diversidades_num
+<<<<<<< HEAD
+Parasito<-df_diversidades$Parasito
+=======
 
 #Ya se que parece tonto, pero no encontré otra forma
 ID<-df_diversidades$ID
+>>>>>>> 1f00fabe669894b6d8c66d104b7baa3209c49d40
 
 #Podría ser con otro método 
 diversidistancias<-(dist(diversidades_num, method = "euclidean"))
 
 diversidistancias<-as.matrix(diversidistancias)
 
+<<<<<<< HEAD
+rownames(diversidistancias)<- Parasito
+colnames(diversidistancias)<-Parasito
+=======
 #Para que los nodos acaben teniendo nombre, luego se ve por qué empecé de acá
 rownames(diversidistancias)<- ID
 colnames(diversidistancias)<-ID
+>>>>>>> 1f00fabe669894b6d8c66d104b7baa3209c49d40
 
 library(igraph)
 #Es para que las conexiones solo aparezcan si son con un valor mayor al promedio

@@ -90,5 +90,8 @@ View(Final)
 Final <- Final[, c(ncol(Final), 1:(ncol(Final)-1))]
 View(Final)
 
+Final[is.na(Final)] <- 0
+
+
 write.csv(Final, "01_RowData/dataframe_final")
 
