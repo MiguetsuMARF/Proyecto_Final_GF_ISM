@@ -127,11 +127,8 @@ caracteristicas_parasitos <- data.frame(
 # no inclui affrica y america porque el vector queda igual al de distribucion tropical
 
 View(caracteristicas_parasitos)
-
 caracteristicas_parasitos -> Datos_parasitos_2
-
 rownames(Datos_parasitos_2) <- caracteristicas_parasitos$Parasito
-
 Datos_parasitos_2[,2:37] -> dp2
 
 # Distancia entre parasitos
@@ -140,15 +137,5 @@ str(m_dist_DP2)
 
 
 
-# Correlación entre parasitos
-
-str(dp2)
-View(dp2)
-dim(Datos_parasitos_2)
-
-cor_matrix_DP2 <- cor(t(dp2), method = "pearson")   
-
-# cluster
-# medidas de centralidad
 
 

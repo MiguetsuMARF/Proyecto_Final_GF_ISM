@@ -11,4 +11,3 @@ Para Ancilostoma 2: Appiah-Twum, F., Akorli, J., Okyere, L., Sagoe, K., Osabutey
 Para diversos helmintos: Gobert, G. N., Atkinson, L. E., Lokko, A., Yoonuan, T., Phuphisut, O., Poodeepiyasawat, A., ... & Adisakwattana, P. (2022). Clinical helminth infections alter host gut and saliva microbiota. PLoS Neglected Tropical Diseases, 16(6), e0010491.
 
 Para Haplorchis: Prommi, A., Prombutara, P., Watthanakulpanich, D., Adisakwattana, P., Kusolsuk, T., Yoonuan, T., ... & Chaisiri, K. (2020). Intestinal parasites in rural communities in Nan Province, Thailand: changes in bacterial gut microbiota associated with minute intestinal fluke infection. Parasitology, 147(9), 972-984.
-

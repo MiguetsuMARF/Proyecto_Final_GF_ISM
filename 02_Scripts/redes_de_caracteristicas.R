@@ -47,9 +47,9 @@ mean_distance(g_1)
 
 edge_density(g_1)
 
-sort(eccentricity(g_1), decreasing = FALSE)
+sort(eccentricity(g_1), decreasing = FALSE) # Plasmodium es el que esta más fuera del centro
 
-sort(closeness(g_1), decreasing = TRUE)
+sort(closeness(g_1), decreasing = TRUE) # El nodo que esta más cerca de los demas es Haplorchis
 
 
 
@@ -62,12 +62,13 @@ plot(g_1, vertex.color= membership(walktrap_g1),  edge.arrow.size=0.25)
 infomap.community(g_1) -> infomap_g1
 membership(infomap_g1)
 
-# Todo esta de la verga si es no dirigida.
-# Todos estan conectados y la distancia depende de que tan parecidos
-# o que tan diferentes son.
+# Las medidas de centralidad nos dan poca información cuando la red se hizo a partir
+# de una matriz de distancias, ya que todos los nodos estan interconectados entre si,
+# por lo tanto medidas como el degree o el betweenes son identicos, al igual que los
+# metodos de clustering.
 
 
-tkplot(g_1)
+tkplot(g_1) # red interactiva
 
 
 # ------------------------ RED BOULEANA ----------------------- #
@@ -76,7 +77,8 @@ mean(mat_dist) -> umbral # Usare este dato como ubral para determinar si estan o
 umbral 
 
 # Hare una mat bouleana
-m_bouleana <- mat_dist < umbral
+m_bouleana <- mat_dist < umbral # Es una matriz de distancias, entre más parecidas
+# las muestras menor es su distancia, porlo tanto requerimos que la distancia sea menor al umbral
 diag(m_bouleana) <- 0 
 
 
