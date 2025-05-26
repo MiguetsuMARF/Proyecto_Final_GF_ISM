@@ -32,13 +32,16 @@ matriz_adj2 <- (mc < (0.1))
 coexpresion2 <- graph_from_adjacency_matrix(matriz_adj2, mode = "undirected", diag = FALSE)
 plot(coexpresion2)
 
+pdf("03_Results/red_abundancias_dist.pdf")
 optimal <- cluster_optimal(coexpresion)
 plot(coexpresion, vertex.color=membership(optimal))
+dev.off()
 
 walktrap2 <- cluster_walktrap(coexpresion2)
 plot(coexpresion2, vertex.color=membership(walktrap2))
 
+pdf("03_Results/red_abundancias_cor.pdf")
 optimal2 <- cluster_optimal(coexpresion2)
 plot(coexpresion2, vertex.color=membership(optimal2))
-
+dev.off()
 
