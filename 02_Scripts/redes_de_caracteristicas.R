@@ -9,14 +9,19 @@ str(m_dist_DP2)
 
 mat_dist <- as.matrix(m_dist_DP2)
 
+pdf("03_Results/heat_map_caracteristicas.pdf")
 heatmap(mat_dist, main = "Matriz de distancias")
+dev.off()
 
 g_1 <- graph_from_adjacency_matrix(mat_dist, mode = "undirected", weighted = TRUE, diag = FALSE)
 
+
+pdf("03_Results/Red_pesada_no_dirigida_caracteristicas.pdf")
 plot(g_1,edge.size = 10,vertex.size=(eccentricity(g_1)^2), vertex.color = "beige", # el tamaño del nodo depende de la eccentricidad
      edge.color = "darkred",
      edge.width = (1 / E(g_1)$weight)^2*10,
      edge.arrow.size=0.1,layout=layout.fruchterman.reingold.grid,vertex.size.label=0.20)
+dev.off()
 
 
 plot(g_1,

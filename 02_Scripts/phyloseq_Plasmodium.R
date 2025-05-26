@@ -28,4 +28,3 @@ analyses_metadata_df <- getMetadata(mg, head(analyses_accessions, 10));
 t(head(analyses_metadata_df))
 analyses_ps <- getResult(mg, analyses_metadata_df$analysis_accession, tax_SU = "SSU")
 analyses_ps
-class(analyses_ps)
