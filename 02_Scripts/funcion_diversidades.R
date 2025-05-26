@@ -120,3 +120,7 @@ TukeyHSD(Shannova)
 
 df_anova$nicho<- c("intestino_delgado", "intestino_delgado", "conductos_biliares"
                    , "colon", "intestino_delgado", "", "", "", "", "")
+
+parasinoba <- aov(Shannon ~ Parasito, df_anova)
+summary.aov(parasinoba)
+TukeyHSD(parasinoba)
