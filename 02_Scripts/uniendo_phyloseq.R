@@ -66,7 +66,7 @@ Final <- data.frame()
 a <- c("Haplorchis taichui", "Ancilostoma", "Ascaris", "Necator",
        "Opisthorchis", "Plasmodium", "Taenia Saginata", "Trichuris", "Control", "Schistosoma")
 
-
+View(A)
 write.csv(A, "01_RowData/dataframe")
 
 for (i in 1:10) {

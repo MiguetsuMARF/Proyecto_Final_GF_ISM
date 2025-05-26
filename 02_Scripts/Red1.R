@@ -1,4 +1,5 @@
 data <- read.csv("01_RowData/dataframe_final")
+
 View(data)
 
 rownames(data) <- data[,1]
@@ -29,3 +30,16 @@ diag(mc) <- 0
 matriz_adj2 <- (mc > (0.5))
 coexpresion2 <- graph_from_adjacency_matrix(matriz_adj2, mode = "undirected", diag = FALSE)
 plot(coexpresion2)
+
+optimal <- cluster_optimal(coexpresion)
+plot(coexpresion, vertex.color=membership(optimal))
+
+walktrap2 <- cluster_walktrap(coexpresion2)
+plot(coexpresion2, vertex.color=membership(walktrap2))
+
+optimal2 <- cluster_optimal(coexpresion2)
+
+
+plot(coexpresion2, vertex.color=membership(optimal2))
+
+
