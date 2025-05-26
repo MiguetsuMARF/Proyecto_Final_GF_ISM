@@ -125,3 +125,18 @@ TukeyHSD(Shannova)
 Simpsonova<-aov(Simpson~tipo_parasito, data = df_anova)
 summary(Simpsonova)
 TukeyHSD(Simpsonova)
+
+plot_richness(ps_ancilostoma, measures = c("Shannon", "Simpson"))
+
+plotsdiv <- function(lista_phyloseq, titulos) {
+  plots <- list()  # 
+  for (i in 1:length(lista_phyloseq)) {
+    p <- plot_richness(lista_phyloseq[[i]], 
+                       measures = c("Shannon", "Simpson"), 
+                       title = titulos[i])
+    plots[[i]] <- p
+  }
+  return(plots) 
+}
+
+plotsdiv(ps_parasitos, nombres)
