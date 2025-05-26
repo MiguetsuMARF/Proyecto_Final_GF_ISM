@@ -28,7 +28,7 @@ plot(coexpresion)
 mc <- cor(t(as.matrix(data2)))
 diag(mc) <- 0
 
-matriz_adj2 <- (mc < (0.2))
+matriz_adj2 <- (mc < (0.1))
 coexpresion2 <- graph_from_adjacency_matrix(matriz_adj2, mode = "undirected", diag = FALSE)
 plot(coexpresion2)
 
@@ -39,8 +39,6 @@ walktrap2 <- cluster_walktrap(coexpresion2)
 plot(coexpresion2, vertex.color=membership(walktrap2))
 
 optimal2 <- cluster_optimal(coexpresion2)
-
-
 plot(coexpresion2, vertex.color=membership(optimal2))
 
 
