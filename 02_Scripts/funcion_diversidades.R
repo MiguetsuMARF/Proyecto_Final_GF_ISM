@@ -100,3 +100,19 @@ V(red_diversidades)$name
 V(red_diversidades)$name<- rownames(diversifiltro)
 
 plot(red_diversidades) #No se ve ningún resutlado coherente.
+
+
+#Ahora voy a hacer ANOVAs
+
+df_anova<- df_diversidades[-1,]
+df_anova$tipo_parasito<- c("trematodo", "nematodo", "trematodo", "nematodo",
+                                  "nematodo", "nematodo", "cestodo",
+                                  "apicomplexo", "trematodo", "nematodo", "nematodo",
+                                  "nematodo")
+
+Shannova<-aov(Shannon~tipo_parasito, data = df_anova)
+summary(Shannova)
+TukeyHSD(Shannova)
+
+df_anova$nicho<- c("intestino_delgado", "intestino_delgado", "conductos_biliares"
+                   , "colon", "intestino_delgado", "", "", "", "", "")
