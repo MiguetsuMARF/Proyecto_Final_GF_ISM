@@ -13,13 +13,13 @@ Generar redes a partir de características descriptivas de parásitos y analizar
 
 ## Estructura
 
-### 01Data 
+### 01_Data 
 - Carpeta de RDS
   Contiene los archivos phyloseqs en formato RDS que se utilizaron para el análisis.
 - Carpeta de fastq
 - Archivos sueltos de metadatos y srr para generar phyloseqs.
 
-### 02Scripts
+### 02_Scripts
 - Redes_características
 Script para generar red a partir de datos de características biológicas de cara parásito analizado.
 - Script_base_datos
@@ -41,7 +41,7 @@ Script que se utilizó para descargar y generar los datos phyloseq de ascaris y 
 - Fastq_parasitos
 Script que se utilizó para descargar y generar los datos phyloseq del control.
 
-### 03Results
+### 03_Results
 Contiene en formato pdf y png las redes ya clusterizadas de cada tipo de análisis realizado.
 
 ### Formato de ia
