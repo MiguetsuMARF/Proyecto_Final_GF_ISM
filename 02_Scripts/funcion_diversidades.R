@@ -89,7 +89,7 @@ library(igraph)
 #Es para que las conexiones solo aparezcan si son con un valor mayor al promedio
 #de la matriz, pero pues sigue siendo algo arbitrario 
 
-umbral<- mean(diversidistancias)
+umbral<- 1.5*mean(diversidistancias)
 diversifiltro<- diversidistancias > umbral #Filtrando por el umbral
 
 #Para que los nodos tengan nombre 
