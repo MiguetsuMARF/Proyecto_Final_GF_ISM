@@ -107,9 +107,8 @@ V(red_diversidades)$name<- rownames(diversifiltro)
 optimal <- cluster_optimal(red_diversidades)
 plot(red_diversidades, vertex.color=membership(optimal))
 
-pdf("03_Results/red_diversidades")
+png("03_Results/red_diversidades")
 plot(red_diversidades, vertex.color=membership(optimal))
-#No se ve ningún resutlado coherente.
 dev.off()
 
 #Ahora voy a hacer ANOVAs
