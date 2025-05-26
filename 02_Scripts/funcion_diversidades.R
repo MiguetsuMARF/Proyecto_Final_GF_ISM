@@ -108,7 +108,8 @@ optimal <- cluster_optimal(red_diversidades)
 plot(red_diversidades, vertex.color=membership(optimal))
 
 pdf("03_Results/red_diversidades")
-plot(red_diversidades) #No se ve ningún resutlado coherente.
+plot(red_diversidades, vertex.color=membership(optimal))
+#No se ve ningún resutlado coherente.
 dev.off()
 
 #Ahora voy a hacer ANOVAs
