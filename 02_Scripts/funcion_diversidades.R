@@ -26,14 +26,14 @@ diversidades_parasito <- function(lista_phyloseq) {
     if (taxa_are_rows(ps)) {
       otu <- t(otu)
     }
-    shannon <- diversity(otu, index = "shannon")
-    SS <- specnumber(otu)
-    sh_norm <- mean(shannon / log(SS), na.rm = TRUE)
-    simpson <- mean(diversity(otu, index = "simpson"))
-    sh_norm<- mean(shannon/log(SS))
-    shannon_media <- mean(shannon, na.rm = TRUE)
-    simpson_media <- mean(diversity(otu, index = "simpson"), na.rm = TRUE)
     
+    shannon <- vegan::diversity(otu, index = "shannon")
+    SS <- vegan::specnumber(otu)
+    simpson <- vegan::diversity(otu, index = "simpson")
+    
+    shannon_media <- mean(shannon, na.rm = TRUE)
+    simpson_media <- mean(simpson, na.rm = TRUE)
+    sh_norm <- mean(shannon / log(SS), na.rm = TRUE)
     
     resultados <- rbind(resultados, data.frame(
       Parasito = names(lista_phyloseq)[i],
@@ -73,7 +73,7 @@ diversidades_num
 
 
 #Ya se que parece tonto, pero no encontré otra forma
-ID<-df_diversidades$ID
+ID<-df_diversidades$Parasito
 
 
 #Podría ser con otro método 
